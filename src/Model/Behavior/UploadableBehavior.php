@@ -88,11 +88,11 @@ class UploadableBehavior extends Behavior
 
         Type::map('Utils.File', 'Utils\Database\Type\FileType');
 
-        $schema = $table->schema();
+        $schema = $table->getSchema();
         foreach ($this->getFieldList() as $field => $settings) {
-            $schema->columnType($field, 'Utils.File');
+            $schema->getColumnType($field, 'Utils.File');
         }
-        $table->schema($schema);
+        $table->getSchema($schema);
 
         $this->_Table = $table;
     }
@@ -196,7 +196,7 @@ class UploadableBehavior extends Behavior
 
         $list = [];
 
-        foreach ($this->config() as $key => $value) {
+        foreach ($this->getConfig() as $key => $value) {
             if (!in_array($key, $this->_presetConfigKeys) || is_integer($key)) {
                 if (is_integer($key)) {
                     $field = $value;
@@ -328,7 +328,7 @@ class UploadableBehavior extends Behavior
 
         $options = Hash::merge($_options, $options);
 
-        $data = $this->config($field);
+        $data = $this->getConfig($field);
 
         if (is_null($data)) {
             foreach ($this->config() as $key => $config) {
@@ -349,10 +349,10 @@ class UploadableBehavior extends Behavior
             $data = Hash::insert($data, 'fields.filePath', $field);
         }
 
-        $data = Hash::merge($this->config('defaultFieldConfig'), $data);
+        $data = Hash::merge($this->getConfig('defaultFieldConfig'), $data);
 
         if ($options['save']) {
-            $this->config($field, $data);
+            $this->getConfig($field, $data);
         }
 
         return $data;
