@@ -88,7 +88,7 @@ class UploadableBehavior extends Behavior
 
         Type::map('Utils.File', 'Utils\Database\Type\FileType');
 
-        $schema = $table->schema();
+        $schema = $table->getSchema();
         foreach ($this->getFieldList() as $field => $settings) {
             $schema->columnType($field, 'Utils.File');
         }
