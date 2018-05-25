@@ -90,7 +90,7 @@ class UploadableBehavior extends Behavior
 
         $schema = $table->getSchema();
         foreach ($this->getFieldList() as $field => $settings) {
-            $schema->getColumnType($field, 'Utils.File');
+            $schema->setColumnType($field, 'Utils.File');
         }
         $table->getSchema($schema);
 
