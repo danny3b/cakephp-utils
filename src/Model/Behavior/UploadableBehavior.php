@@ -153,7 +153,7 @@ class UploadableBehavior extends Behavior
             }
         }
         foreach ($storedToSave as $toSave) {
-            $event->subject()->save($toSave);
+            $event->getSubject()->save($toSave);
         }
         $this->_savedFields = [];
     }
