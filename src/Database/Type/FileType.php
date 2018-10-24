@@ -28,4 +28,13 @@ class FileType extends Type
     {
         return $value;
     }
+    public function toDatabase($value, $driver) 
+    {
+        return $value;
+    }
+     public function toPHP($value, $driver) 
+    {
+        return $value;
+    }
+
 }
